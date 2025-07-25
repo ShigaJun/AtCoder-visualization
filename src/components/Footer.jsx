@@ -1,7 +1,7 @@
 export default function Footer() {
     return (
         <footer className="footer">
-            <p>&copy; 20xx hogehoge</p>
+            <p>2025年 B3前期ゼミ制作</p>
         </footer>
     );
 }
