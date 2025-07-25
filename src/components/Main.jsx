@@ -1,19 +1,21 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { fetchHistory } from "../api";
 import RatingChart from "./RatingChart";
 
 export default function Main() {
-    const urls = null;
+    const [data, setData] = useState(null);
+
     useEffect(() => {
-        fetchHistory("WatanabeHaruto").then((urls) => {
-            console.log(urls);
+        fetchHistory("WatanabeHaruto").then((data) => {
+            console.log(data);
+            setData(data)
         });
     }, []);
 
     return (
         <main>
-            <p>Hello World!</p>
-            <RatingChart />
+            <h2>AtCoder レーティング推移</h2>
+            <RatingChart data={data} />
         </main>
     );
 }
