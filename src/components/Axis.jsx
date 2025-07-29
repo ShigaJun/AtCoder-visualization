@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import { select, axisBottom, axisLeft } from "d3";
-import { HEIGHT, WIDTH, MARGIN } from "./constants";
+import { HEIGHT, WIDTH, MARGIN } from "../constants";
 
 export default function Axis({ xScale, yScale }) {
     const xRef = useRef();

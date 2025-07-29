@@ -1,4 +1,4 @@
-import { HEIGHT, WIDTH, MARGIN, COLORS, STEP_SIZE } from "./constants";
+import { HEIGHT, WIDTH, MARGIN, COLORS, STEP_SIZE } from "../constants";
 
 export default function BackgroundBands({ yScale }) {
     return (

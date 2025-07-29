@@ -1,5 +1,5 @@
 import { scaleLinear, scaleTime, extent } from "d3";
-import { MARGIN, WIDTH, HEIGHT } from "./constants";
+import { MARGIN, WIDTH, HEIGHT } from "../constants";
 
 export function useRatingChart(data) {
     const xExtent = extent(data, d => new Date(d.EndTime));
