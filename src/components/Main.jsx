@@ -1,21 +1,23 @@
 import { useState, useEffect } from "react";
-import { fetchHistory } from "../api";
+import { fetchUserData } from "../api";
 import RatingChart from "./RatingChart";
 
 export default function Main() {
-    const [data, setData] = useState(null);
+    const [ratingData, setRatingData] = useState(null);
+    const [submissionData, setSubmissionData] = useState(null);
 
     useEffect(() => {
-        fetchHistory("WatanabeHaruto").then((data) => {
+        fetchUserData("WatanabeHaruto").then((data) => {
             console.log(data);
-            setData(data)
+            setRatingData(data.ratingData);
+            setSubmissionData(data.submissionData);
         });
     }, []);
 
     return (
         <main>
             <h2>AtCoder レーティング推移</h2>
-            <RatingChart data={data} />
+            <RatingChart data={ratingData} />
         </main>
     );
 }

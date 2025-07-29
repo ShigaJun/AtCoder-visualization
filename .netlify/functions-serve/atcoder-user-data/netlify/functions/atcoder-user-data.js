@@ -5088,12 +5088,12 @@ var init_multipart_parser = __esm({
   }
 });
 
-// netlify/functions/atcoder-history.mjs
-var atcoder_history_exports = {};
-__export(atcoder_history_exports, {
+// netlify/functions/atcoder-user-data.mjs
+var atcoder_user_data_exports = {};
+__export(atcoder_user_data_exports, {
   handler: () => handler
 });
-module.exports = __toCommonJS(atcoder_history_exports);
+module.exports = __toCommonJS(atcoder_user_data_exports);
 
 // node_modules/node-fetch/src/index.js
 var import_node_http2 = __toESM(require("http"), 1);
@@ -6376,19 +6376,43 @@ function fixResponseChunkedTransferBadEnding(request, errorCallback) {
   });
 }
 
-// netlify/functions/atcoder-history.mjs
+// netlify/functions/atcoder-user-data.mjs
 async function handler(event) {
-  const user = event.queryStringParameters.user;
+  const { user, api, from_second } = event.queryStringParameters;
+  if (!user || !api) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ error: "Missing required query parameters: user or api" })
+    };
+  }
+  let url;
+  if (api === "history") {
+    url = `https://atcoder.jp/users/${user}/history/json`;
+  } else if (api === "submissions") {
+    const from = from_second || 0;
+    url = `https://kenkoooo.com/atcoder/atcoder-api/v3/user/submissions?user=${user}&from_second=${from}`;
+  } else {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ error: "Invalid API type. Use 'history' or 'submissions'." })
+    };
+  }
   try {
-    const res = await fetch(`https://atcoder.jp/users/${user}/history/json`);
+    const res = await fetch(url);
     const data = await res.json();
+    let responseBody;
+    if (api === "history") {
+      responseBody = { ratingData: data };
+    } else {
+      responseBody = { submissionData: data };
+    }
     return {
       statusCode: 200,
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(responseBody)
     };
   } catch (error) {
     return {
@@ -6421,4 +6445,4 @@ formdata-polyfill/esm.min.js:
 node-domexception/index.js:
   (*! node-domexception. MIT License. Jimmy Wärting <https://jimmy.warting.se/opensource> *)
 */
-//# sourceMappingURL=atcoder-history.js.map
+//# sourceMappingURL=atcoder-user-data.js.map
