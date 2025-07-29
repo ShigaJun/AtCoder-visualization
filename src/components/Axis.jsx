@@ -13,8 +13,8 @@ export default function Axis({ xScale, yScale }) {
 
     return (
         <g>
-            <g ref={xRef} transform={`translate(0,${HEIGHT - MARGIN.bottom})`} />
-            <g ref={yRef} transform={`translate(${MARGIN.left},0)`} />
+            <g ref={xRef} transform={`translate(0, ${HEIGHT - MARGIN.bottom})`} />
+            <g ref={yRef} transform={`translate(${MARGIN.left}, 0)`} />
         </g>
     );
 }
