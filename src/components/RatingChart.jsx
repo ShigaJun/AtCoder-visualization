@@ -1,4 +1,4 @@
-import { WIDTH, HEIGHT } from "./constants";
+import { WIDTH, HEIGHT } from "../constants";
 import { useRatingChart } from "./useRatingChart";
 import Axis from "./Axis";
 import BackgroundBands from "./BackgroundBands";
