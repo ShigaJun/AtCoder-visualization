@@ -1,7 +1,7 @@
 {
 	"geolocation": {
 		"data": {
-			"city": "Matsuyama",
+			"city": "Machida",
 			"country": {
 				"code": "JP",
 				"name": "Japan"
@@ -11,10 +11,10 @@
 				"name": "Tokyo"
 			},
 			"timezone": "Asia/Tokyo",
-			"latitude": 35.6682,
-			"longitude": 139.6647,
-			"postalCode": "156-0041"
+			"latitude": 35.5381,
+			"longitude": 139.4479,
+			"postalCode": "194-0011"
 		},
-		"timestamp": 1753939110562
+		"timestamp": 1754054471586
 	}
 }
