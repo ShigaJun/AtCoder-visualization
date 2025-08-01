@@ -6,8 +6,10 @@ import RatingChart from "./RatingChart";
 import DiligenceChart from "./DiligenceChart";
 import CumulativeScores from "../utils/CumulativeScores";
 
+const defaultUser = "WatanabeHaruto";
+
 export default function Main() {
-    const [inputs, setInputs] = useState(["WatanabeHaruto"]);
+    const [inputs, setInputs] = useState([defaultUser]);
     const [userNames, setUserNames] = useState([]);
     const [ratingDatas, setRatingDatas] = useState([]);
     const [submissionDatas, setSubmissionDatas] = useState([]);
@@ -26,19 +28,15 @@ export default function Main() {
         }
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const trimmedNames = inputs.map((name) => name.trim()).filter(Boolean);
-
-        setUserNames(trimmedNames);
+    const loadUserData = async (names) => {
         setErrors([]);
 
-        const ratingPromises = trimmedNames.map(name =>
+        const ratingPromises = names.map(name =>
             fetchUserData(name, "history")
                 .then(data => data.ratingData)
                 .catch(() => null)
         );
-        const submissionPromises = trimmedNames.map(name =>
+        const submissionPromises = names.map(name =>
             fetchUserData(name, "submissions")
                 .then(data => data.submissionData)
                 .catch(() => null)
@@ -50,7 +48,7 @@ export default function Main() {
         const validRatings = ratings.map((r, idx) => r && submissions[idx] ? r : null);
         const validSubmissions = submissions.map((s, idx) => s && ratings[idx] ? s : null);
 
-        const errorMessages = trimmedNames.map((name, idx) => {
+        const errorMessages = names.map((name, idx) => {
             if (!validRatings[idx] || !validSubmissions[idx]) {
                 return `${name} のデータ取得に失敗しました．`;
             }
@@ -65,7 +63,7 @@ export default function Main() {
 
         validRatings.forEach((r, idx) => {
             if (r && validSubmissions[idx]) {
-                filteredNames.push(trimmedNames[idx]);
+                filteredNames.push(names[idx]);
                 filteredRatings.push(r);
                 filteredSubmissions.push(validSubmissions[idx]);
             }
@@ -75,16 +73,20 @@ export default function Main() {
         setRatingDatas(filteredRatings);
         setSubmissionDatas(filteredSubmissions);
 
-        console.log(userNames);
-        console.log(ratingDatas);
-        console.log(submissionDatas);
-
         const processedList = filteredRatings.map((rData, idx) =>
             CumulativeScores(rData, filteredSubmissions[idx])
         );
         setProcessedDataList(processedList);
+    };
 
-        console.log(processedDataList);
+    useEffect(() => {
+        loadUserData([defaultUser]);
+    }, []);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const trimmedNames = inputs.map(name => name.trim()).filter(Boolean);
+        await loadUserData(trimmedNames);
     };
 
     return (
