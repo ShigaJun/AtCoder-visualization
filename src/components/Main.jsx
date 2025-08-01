@@ -109,7 +109,7 @@ export default function Main() {
 
                 {inputs.length < MAX_USERS && (
                     <button type="button" onClick={handleAddUser} style={{ marginBottom: "0.5rem" }}>
-                        ＋ユーザを追加
+                        ＋ユーザーを追加
                     </button>
                 )}
                 <br />
