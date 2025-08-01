@@ -1,4 +1,4 @@
-export default function DiligencePoints({ data, xScale, yScale }) {
+export default function DiligencePoints({ data, xScale, yScale, color }) {
     return (
         <g>
             {data.map((d, i) => (
@@ -7,7 +7,7 @@ export default function DiligencePoints({ data, xScale, yScale }) {
                     cx={xScale(d.round)}
                     cy={yScale(d.cumulativeScore)}
                     r={4}
-                    fill="#000"
+                    fill={color}
                     stroke="#fff"
                     strokeWidth={1.5}
                 />
