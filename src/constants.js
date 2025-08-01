@@ -13,3 +13,6 @@ export const MARGIN = { top: 20, right: 30, bottom: 30, left: 50 };
 export const WIDTH = 800;
 export const HEIGHT = 400;
 export const STEP_SIZE = 400;
+
+export const MAX_USERS = 4;
+export const LEGEND_COLORS = ["#e41a1c", "#377eb8", "#4daf4a", "#984ea3"];
