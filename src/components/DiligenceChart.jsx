@@ -10,26 +10,24 @@ export default function DiligenceChart({ dataList }) {
     const { xScale, yScale } = useDiligenceChart(dataList);
 
     return (
-        <div>
-            <svg width={WIDTH} height={HEIGHT}>
-                <Axis xScale={xScale} yScale={yScale} />
-                {dataList.map((data, idx) => (
-                    <g key={idx}>
-                        <DiligenceLine 
-                            data={data}
-                            xScale={xScale}
-                            yScale={yScale}
-                            color={LEGEND_COLORS[idx % LEGEND_COLORS.length]}
-                        />
-                        <DiligencePoints
-                            data={data}
-                            xScale={xScale}
-                            yScale={yScale}
-                            color={LEGEND_COLORS[idx % LEGEND_COLORS.length]}
-                        />
-                    </g>
-                ))}
-            </svg>
-        </div>
+        <svg width={WIDTH} height={HEIGHT}>
+            <Axis xScale={xScale} yScale={yScale} />
+            {dataList.map((data, idx) => (
+                <g key={idx}>
+                    <DiligenceLine
+                        data={data}
+                        xScale={xScale}
+                        yScale={yScale}
+                        color={LEGEND_COLORS[idx % LEGEND_COLORS.length]}
+                    />
+                    <DiligencePoints
+                        data={data}
+                        xScale={xScale}
+                        yScale={yScale}
+                        color={LEGEND_COLORS[idx % LEGEND_COLORS.length]}
+                    />
+                </g>
+            ))}
+        </svg>
     );
 }
