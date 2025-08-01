@@ -4,7 +4,7 @@ import Axis from "./Axis";
 import DiligenceLine from "./DiligenceLine";
 import DiligencePoints from "./DiligencePoints";
 
-export default function DiligenceChart({ dataList, userNames }) {
+export default function DiligenceChart({ dataList }) {
     if (!dataList) return <p>Loading...</p>;
 
     const { xScale, yScale } = useDiligenceChart(dataList);
