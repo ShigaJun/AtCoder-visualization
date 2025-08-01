@@ -1,6 +1,6 @@
 import { line } from "d3";
 
-export default function RatingLine({ data, xScale, yScale }) {
+export default function RatingLine({ data, xScale, yScale, color }) {
     if (!data) return null;
 
     const filteredData = data
@@ -18,5 +18,5 @@ export default function RatingLine({ data, xScale, yScale }) {
 
     const pathData = lineGenerator(filteredData);
 
-    return <path d={pathData} fill="none" stroke="#000" strokeWidth={2} />;
+    return <path d={pathData} fill="none" stroke={color} strokeWidth={2} />;
 }
