@@ -12,7 +12,6 @@ export default function Main() {
     const [inputs, setInputs] = useState([defaultUser]);
     const [userNames, setUserNames] = useState([]);
     const [ratingDatas, setRatingDatas] = useState([]);
-    const [submissionDatas, setSubmissionDatas] = useState([]);
     const [processedDataList, setProcessedDataList] = useState([]);
     const [errors, setErrors] = useState([]);
 
@@ -71,7 +70,6 @@ export default function Main() {
 
         setUserNames(filteredNames);
         setRatingDatas(filteredRatings);
-        setSubmissionDatas(filteredSubmissions);
 
         const processedList = filteredRatings.map((rData, idx) =>
             CumulativeScores(rData, filteredSubmissions[idx])
@@ -82,6 +80,19 @@ export default function Main() {
     useEffect(() => {
         loadUserData([defaultUser]);
     }, []);
+
+    useEffect(() => {
+        console.log("userNames:", userNames);
+    }, [userNames]);
+
+    useEffect(() => {
+        console.log("ratingDatas:", ratingDatas);
+    }, [ratingDatas]);
+
+    useEffect(() => {
+        console.log("diligenceDatas:", processedDataList);
+    }, [processedDataList]);
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();

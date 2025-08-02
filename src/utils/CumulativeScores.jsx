@@ -33,13 +33,6 @@ export default function CumulativeScores(ratingData, submissionData) {
             round: index + 1,
             cumulativeScore: totalPoints
         });
-
-        console.log(`Round ${index + 1}`);
-        console.log(`Time range: ${prevContestTime} ~ ${contestTime}`);
-        console.log(`Points this round: ${pointsThisRound}`);
-
-        console.log("contest.EndTime", contest.EndTime);
-        console.log("contestTime", contestTime);
     });
 
     return processed;
