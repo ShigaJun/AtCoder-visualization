@@ -136,12 +136,20 @@ export default function Main() {
             )}
 
             <Legend userNames={userNames} />
-            <h2>AtCoder レーティング推移</h2>
-            <p>x軸：日付　y軸：レーティング</p>
-            <RatingChart dataList={ratingDatas} />
-            <h2>AtCoder 精進チャート</h2>
-            <p>x軸：コンスト出場回数　y軸：累積AC得点数</p>
-            <DiligenceChart dataList={processedDataList} />
+            <div className="field">
+                <div className="card">
+                    <h2>AtCoder レーティング推移</h2>
+                    <p>x軸：日付　y軸：レーティング</p>
+                    <RatingChart dataList={ratingDatas} />
+                </div>
+                <div className="card">
+                    <h2>AtCoder 精進チャート</h2>
+                    <p>x軸：コンスト出場回数　y軸：累積AC得点数</p>
+                    <DiligenceChart dataList={processedDataList} />
+                </div>
+            </div>
+
+
         </main>
     );
 }
