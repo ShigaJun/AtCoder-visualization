@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { TextField, Button, Grid, Card, CardContent, Typography } from "@mui/material";
+
 import { MAX_USERS } from "../constants";
 import { fetchUserData } from "../api";
 import Legend from "./Legend";
@@ -107,24 +109,31 @@ export default function Main() {
                     <div key={idx} style={{ marginBottom: "0.5rem" }}>
                         <label>
                             AtCoder ID {idx + 1}:
-                            <input
+                            <TextField
+                                id="outlined-basic"
+                                value={input}
+                                onChange={(e) => handleChange(idx, e.target.value)}
+                                label="AtCoder ID"
+                                variant="outlined"
+                            />
+                            {/* <input
                                 type="text"
                                 value={input}
                                 onChange={(e) => handleChange(idx, e.target.value)}
                                 placeholder="例: WatanabeHaruto"
                                 style={{ marginLeft: "0.5rem" }}
-                            />
+                            /> */}
                         </label>
                     </div>
                 ))}
 
                 {inputs.length < MAX_USERS && (
-                    <button type="button" onClick={handleAddUser} style={{ marginBottom: "0.5rem" }}>
+                    <Button variant="outlined" type="button" onClick={handleAddUser} style={{ marginBottom: "0.5rem" }}>
                         ＋ユーザーを追加
-                    </button>
+                    </Button>
                 )}
                 <br />
-                <button type="submit">表示</button>
+                <Button variant="contained" type="submit">表示</Button>
             </form>
 
             {errors.length > 0 && (
@@ -136,20 +145,35 @@ export default function Main() {
             )}
 
             <Legend userNames={userNames} />
-            <div className="field">
-                <div className="card">
-                    <h2>AtCoder レーティング推移</h2>
-                    <p>x軸：日付　y軸：レーティング</p>
-                    <RatingChart dataList={ratingDatas} />
-                </div>
-                <div className="card">
-                    <h2>AtCoder 精進チャート</h2>
-                    <p>x軸：コンスト出場回数　y軸：累積AC得点数</p>
-                    <DiligenceChart dataList={processedDataList} />
-                </div>
-            </div>
+            <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                    <Card>
+                        <CardContent>
+                            <Typography variant="h5" component="h2" gutterBottom>
+                                AtCoder レーティング推移
+                            </Typography>
+                            <Typography variant="body2" gutterBottom>
+                                x軸：日付　y軸：レーティング
+                            </Typography>
+                            <RatingChart dataList={ratingDatas} />
+                        </CardContent>
+                    </Card>
+                </Grid>
 
-
+                <Grid item xs={12} sm={6}>
+                    <Card>
+                        <CardContent>
+                            <Typography variant="h5" component="h2" gutterBottom>
+                                AtCoder 精進チャート
+                            </Typography>
+                            <Typography variant="body2" gutterBottom>
+                                x軸：コンスト出場回数　y軸：累積AC得点数
+                            </Typography>
+                            <DiligenceChart dataList={processedDataList} />
+                        </CardContent>
+                    </Card>
+                </Grid>
+            </Grid>
         </main>
     );
 }
