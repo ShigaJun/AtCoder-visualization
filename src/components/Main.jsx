@@ -7,6 +7,7 @@ import Legend from "./Legend";
 import RatingChart from "./RatingChart";
 import DiligenceChart from "./DiligenceChart";
 import CumulativeScores from "../utils/CumulativeScores";
+import Loading from "./Loading";
 
 const defaultUser = "WatanabeHaruto";
 
@@ -16,6 +17,7 @@ export default function Main() {
     const [ratingDatas, setRatingDatas] = useState([]);
     const [processedDataList, setProcessedDataList] = useState([]);
     const [errors, setErrors] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     const handleChange = (index, value) => {
         const newInputs = [...inputs];
@@ -83,23 +85,12 @@ export default function Main() {
         loadUserData([defaultUser]);
     }, []);
 
-    useEffect(() => {
-        console.log("userNames:", userNames);
-    }, [userNames]);
-
-    useEffect(() => {
-        console.log("ratingDatas:", ratingDatas);
-    }, [ratingDatas]);
-
-    useEffect(() => {
-        console.log("diligenceDatas:", processedDataList);
-    }, [processedDataList]);
-
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         const trimmedNames = inputs.map(name => name.trim()).filter(Boolean);
+        setLoading(true);
         await loadUserData(trimmedNames);
+        setLoading(false);
     };
 
     return (
@@ -133,7 +124,7 @@ export default function Main() {
                     </Button>
                 )}
                 <br />
-                <Button variant="contained" type="submit">表示</Button>
+                <Button variant="contained" type="submit" loading={loading}>表示</Button>
             </form>
 
             {errors.length > 0 && (
