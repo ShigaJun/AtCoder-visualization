@@ -62,8 +62,18 @@ export default function InputId({ inputs, setInputs, loadUserData, userNames, ra
                 <Button variant="contained" type="submit" loading={loading}>表示</Button>
             </form>
             <div>
-                <strong>あなたの目標になるかもしれないユーザー</strong>
-                {ratingDatas[0] ? <TargetUserSuggestions myParticiptions={ratingDatas[0].length} myLatestRating={ratingDatas[0][ratingDatas[0].length - 1].NewRating} myFirstRating={ratingDatas[0][0].NewRating} /> : null}
+                {
+                    ratingDatas[0] ?
+                        <>
+                            <strong>あなたの目標になるかもしれないユーザー</strong>
+                            <TargetUserSuggestions
+                                myParticiptions={ratingDatas[0].length}
+                                myLatestRating={ratingDatas[0][ratingDatas[0].length - 1].NewRating}
+                                myFirstRating={ratingDatas[0][0].NewRating}
+                            />
+                        </>
+                        : null
+                }
             </div>
         </div>
     );
