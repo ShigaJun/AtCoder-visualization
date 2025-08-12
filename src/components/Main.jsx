@@ -94,7 +94,6 @@ export default function Main() {
                 {inputs.map((input, idx) => (
                     <div key={idx} style={{ marginBottom: "0.5rem" }}>
                         <label>
-                            {/* AtCoder ID {idx + 1}: */}
                             <TextField
                                 error={checkError(idx)}
                                 id="outlined-basic"
