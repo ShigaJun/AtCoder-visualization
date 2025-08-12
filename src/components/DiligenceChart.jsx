@@ -4,7 +4,7 @@ import Axis from "./Axis";
 import DiligenceLine from "./DiligenceLine";
 import DiligencePoints from "./DiligencePoints";
 
-export default function DiligenceChart({ dataList }) {
+export default function DiligenceChart({ dataList, userNames }) {
     const { xScale, yScale } = useDiligenceChart(dataList);
     
     if (!dataList || dataList.length == 0) {
@@ -33,6 +33,7 @@ export default function DiligenceChart({ dataList }) {
                         xScale={xScale}
                         yScale={yScale}
                         color={LEGEND_COLORS[idx % LEGEND_COLORS.length]}
+                        userName={userNames[idx]}
                     />
                 </g>
             ))}

@@ -9,7 +9,7 @@ import DiligenceChart from "./DiligenceChart";
 import CumulativeScores from "../utils/CumulativeScores";
 
 export default function Main() {
-    const [inputs, setInputs] = useState(["WatanabeHaruto"]);
+    const [inputs, setInputs] = useState([""]);
     const [userNames, setUserNames] = useState([]);
     const [ratingDatas, setRatingDatas] = useState([]);
     const [processedDataList, setProcessedDataList] = useState([]);
@@ -88,7 +88,7 @@ export default function Main() {
                             <Typography variant="body2" gutterBottom>
                                 x軸：コンスト出場回数　y軸：累積AC得点数
                             </Typography>
-                            <DiligenceChart dataList={processedDataList} />
+                            <DiligenceChart dataList={processedDataList} userNames={userNames} />
                         </CardContent>
                     </Card>
                 </Grid>
