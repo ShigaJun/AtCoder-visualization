@@ -35,7 +35,7 @@ export default function InputId({ inputs, setInputs, loadUserData, userNames, ra
     }
 
     return (
-        <div>
+        <div className="field">
             <form onSubmit={handleSubmit} style={{ marginBottom: "1rem" }}>
                 {inputs.map((input, idx) => (
                     <div key={idx} style={{ marginBottom: "0.5rem" }}>
@@ -61,7 +61,10 @@ export default function InputId({ inputs, setInputs, loadUserData, userNames, ra
                 <br />
                 <Button variant="contained" type="submit" loading={loading}>表示</Button>
             </form>
-            {ratingDatas[0] ? <TargetUserSuggestions myParticiptions={ratingDatas[0].length} myLatestRating={ratingDatas[0][ratingDatas[0].length - 1].NewRating} myFirstRating={ratingDatas[0][0].NewRating} /> : null}
+            <div>
+                <strong>あなたの目標になるかもしれないユーザー</strong>
+                {ratingDatas[0] ? <TargetUserSuggestions myParticiptions={ratingDatas[0].length} myLatestRating={ratingDatas[0][ratingDatas[0].length - 1].NewRating} myFirstRating={ratingDatas[0][0].NewRating} /> : null}
+            </div>
         </div>
     );
 }
