@@ -2,11 +2,11 @@ import { Tooltip } from "@mui/material";
 
 import RatingTooltip from "./RatingTooltip";
 
-export default function RatingPoints({ data, xScale, yScale, color }) {
+export default function RatingPoints({ data, xScale, yScale, color, userName }) {
     return (
         <g>
             {data.map((d, i) => (
-                <Tooltip title={<RatingTooltip data={data[i]} />} key={i}>
+                <Tooltip title={<RatingTooltip data={data[i]} userName={userName} />} key={i}>
                     <circle
                         cx={xScale(i + 1)}
                         cy={yScale(d.NewRating)}

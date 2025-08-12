@@ -81,7 +81,7 @@ export default function Main() {
                             <Typography variant="body2" gutterBottom>
                                 x軸：日付　y軸：レーティング
                             </Typography>
-                            <RatingChart dataList={ratingDatas} />
+                            <RatingChart dataList={ratingDatas} userNames={userNames} />
                         </CardContent>
                     </Card>
                 </Grid>
