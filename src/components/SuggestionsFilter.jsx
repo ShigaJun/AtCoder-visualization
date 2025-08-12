@@ -14,7 +14,7 @@ function ratingToColor(rating) {
     return color;
 }
 
-export default function SuggestionsFilter({ myParticiptions, myLatestRating, myFirstRating }) {
+export default function SuggestionsFilter(myParticiptions, myLatestRating, myFirstRating) {
     const [data, setData] = useState();
     const [results, setResults] = useState();
 
@@ -53,7 +53,5 @@ export default function SuggestionsFilter({ myParticiptions, myLatestRating, myF
         return Math.abs(rating[0] - myFirstRating) <= 20 && 0 <= rating[myParticiptions] - myLatestRating && rating[myParticiptions] - myLatestRating <= 100;
     });
 
-    console.log(filteredUserIds);
-
-    return null;
+    return filteredUserIds;
 }
