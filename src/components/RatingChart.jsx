@@ -7,7 +7,7 @@ import RatingPoints from "./RatingPoints";
 
 export default function RatingChart({ dataList }) {
     if (!dataList || dataList.length == 0) return <p>Loading...</p>;
-    
+
     const { xScale, yScale } = useRatingChart(dataList);
 
     return (
