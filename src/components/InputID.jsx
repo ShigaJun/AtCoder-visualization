@@ -3,7 +3,7 @@ import { TextField, Button } from "@mui/material";
 
 import { MAX_USERS } from "../constants";
 
-export default function InputID({ inputs, setInputs, userNames, ratingDatas, processedDataList }) {
+export default function InputID({ inputs, setInputs, loadUserData, userNames, ratingDatas, processedDataList }) {
     const [loading, setLoading] = useState(false);
 
     const handleChange = (index, value) => {

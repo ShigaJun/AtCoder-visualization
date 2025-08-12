@@ -59,7 +59,7 @@ export default function Main() {
     useEffect(() => {
         loadUserData([defaultUser]);
     }, []);
-
+    
     return (
         <main>
             <InputID
