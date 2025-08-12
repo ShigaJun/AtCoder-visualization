@@ -16,13 +16,13 @@ export default function Main() {
     const [userNames, setUserNames] = useState([]);
     const [ratingDatas, setRatingDatas] = useState([]);
     const [processedDataList, setProcessedDataList] = useState([]);
-    const [errors, setErrors] = useState([]);
     const [loading, setLoading] = useState(false);
 
     const handleChange = (index, value) => {
         const newInputs = [...inputs];
         newInputs[index] = value;
         setInputs(newInputs);
+        console.log("newInputs", newInputs);
     };
 
     const handleAddUser = () => {
@@ -32,8 +32,6 @@ export default function Main() {
     };
 
     const loadUserData = async (names) => {
-        setErrors([]);
-
         const ratingPromises = names.map(name =>
             fetchUserData(name, "history")
                 .then(data => data.ratingData)
@@ -51,14 +49,7 @@ export default function Main() {
         const validRatings = ratings.map((r, idx) => r && submissions[idx] ? r : null);
         const validSubmissions = submissions.map((s, idx) => s && ratings[idx] ? s : null);
 
-        const errorMessages = names.map((name, idx) => {
-            if (!validRatings[idx] || !validSubmissions[idx]) {
-                return `${name} のデータ取得に失敗しました．`;
-            }
-            return null;
-        }).filter(Boolean);
-
-        setErrors(errorMessages);
+        console.log(ratings, submissions);
 
         const filteredNames = [];
         const filteredRatings = [];
@@ -93,27 +84,29 @@ export default function Main() {
         setLoading(false);
     };
 
+    const checkError = (idx) => {
+        if (!ratingDatas[idx] && !processedDataList[idx]) {
+            return false;
+        }
+        return ratingDatas[idx].length === 0 && processedDataList[idx].length === 0;
+    }
+
     return (
         <main>
             <form onSubmit={handleSubmit} style={{ marginBottom: "1rem" }}>
                 {inputs.map((input, idx) => (
                     <div key={idx} style={{ marginBottom: "0.5rem" }}>
                         <label>
-                            AtCoder ID {idx + 1}:
+                            {/* AtCoder ID {idx + 1}: */}
                             <TextField
+                                error={checkError(idx)}
                                 id="outlined-basic"
                                 value={input}
                                 onChange={(e) => handleChange(idx, e.target.value)}
-                                label="AtCoder ID"
+                                label={`AtCoder ID ${idx + 1}`}
                                 variant="outlined"
+                                helperText={checkError(idx) ? `${userNames[idx]}のデータ取得に失敗しました．` : ""}
                             />
-                            {/* <input
-                                type="text"
-                                value={input}
-                                onChange={(e) => handleChange(idx, e.target.value)}
-                                placeholder="例: WatanabeHaruto"
-                                style={{ marginLeft: "0.5rem" }}
-                            /> */}
                         </label>
                     </div>
                 ))}
@@ -126,14 +119,6 @@ export default function Main() {
                 <br />
                 <Button variant="contained" type="submit" loading={loading}>表示</Button>
             </form>
-
-            {errors.length > 0 && (
-                <div style={{ color: "red", marginBottom: "1rem" }}>
-                    {errors.map((err, idx) => (
-                        <div key={idx}>{err}</div>
-                    ))}
-                </div>
-            )}
 
             <Legend userNames={userNames} />
             <Grid container spacing={2}>
