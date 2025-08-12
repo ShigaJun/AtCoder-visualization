@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Grid, Card, CardContent, Typography } from "@mui/material";
 
 import { fetchUserData } from "../api";
-import InputID from "./InputID";
+import InputId from "./InputId";
 import Legend from "./Legend";
 import RatingChart from "./RatingChart";
 import DiligenceChart from "./DiligenceChart";
@@ -55,7 +55,7 @@ export default function Main() {
     
     return (
         <main>
-            <InputID
+            <InputId
                 inputs={inputs}
                 setInputs={setInputs}
                 userNames={userNames}

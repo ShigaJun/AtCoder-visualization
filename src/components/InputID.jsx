@@ -4,7 +4,7 @@ import { TextField, Button } from "@mui/material";
 import { MAX_USERS } from "../constants";
 import TargetUserSuggestions from "./TargetUserSuggestions";
 
-export default function InputID({ inputs, setInputs, loadUserData, userNames, ratingDatas, processedDataList, myParticiptions, myLatestRating, myFirstRating }) {
+export default function InputId({ inputs, setInputs, loadUserData, userNames, ratingDatas, processedDataList, myParticiptions, myLatestRating, myFirstRating }) {
     const [loading, setLoading] = useState(false);
 
     const handleChange = (index, value) => {
@@ -61,7 +61,7 @@ export default function InputID({ inputs, setInputs, loadUserData, userNames, ra
                 <br />
                 <Button variant="contained" type="submit" loading={loading}>表示</Button>
             </form>
-            {ratingDatas[0] ? <TargetUserSuggestions myParticiptions={myParticiptions} myLatestRating={ratingDatas[0][ratingDatas[0].length - 1].NewRating} myFirstRating={myFirstRating} /> : null}
+            {ratingDatas[0] ? <TargetUserSuggestions myParticiptions={myParticiptions} myLatestRating={ratingDatas[0][ratingDatas[0].length - 1].NewRating} myFirstRating={ratingDatas[0][0].NewRating} /> : null}
         </div>
     );
 }

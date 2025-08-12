@@ -25,7 +25,7 @@ export default function SuggestionsFilter({ myParticiptions, myLatestRating, myF
                 return res.json();
             })
             .then(json => setData(json));
-        fetch("/results.json")
+        fetch('/results.json')
             .then(res => {
                 if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
                 return res.json();
@@ -36,8 +36,6 @@ export default function SuggestionsFilter({ myParticiptions, myLatestRating, myF
     if (!data || !results) {
         return null;
     }
-
-    console.log(data);
 
     const myColor = ratingToColor(myLatestRating);
 
@@ -51,9 +49,13 @@ export default function SuggestionsFilter({ myParticiptions, myLatestRating, myF
         .flatMap(color => data[color] || []); // ユーザーIDを結合
 
     console.log(higherUserIds);
-    return (
-        <div>
 
-        </div>
-    );
+    const filteredUserIds = higherUserIds.filter(userId => {
+        const rating = results[userId];
+        return Math.abs(rating[0] - myFirstRating) <= 20;
+    });
+
+    console.log(filteredUserIds);
+
+    return null;
 }
