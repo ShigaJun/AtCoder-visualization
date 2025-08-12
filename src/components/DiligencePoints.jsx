@@ -3,7 +3,6 @@ import { Tooltip } from "@mui/material";
 import DiligenceTooltip from "./DiligenceTooltip";
 
 export default function DiligencePoints({ data, xScale, yScale, color, userName }) {
-    console.log(data);
     return (
         <g>
             {data.map((d, i) => (
