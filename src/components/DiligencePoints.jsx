@@ -1,4 +1,5 @@
 export default function DiligencePoints({ data, xScale, yScale, color }) {
+    console.log("DiligencePoints: ", data);
     return (
         <g>
             {data.map((d, i) => (

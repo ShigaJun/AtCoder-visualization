@@ -4,16 +4,15 @@ export default function RatingLine({ data, xScale, yScale, color }) {
     if (!data) return null;
 
     const filteredData = data
-        .map(d => ({
+        .map((d, idx) => ({
             ...d,
-            parsedEndTime: new Date(d.EndTime),
+            round: idx + 1,
         }))
-        .filter(d => d.NewRating != null && !isNaN(d.parsedEndTime));
 
     if (filteredData.length === 0) return null;
 
     const lineGenerator = line()
-        .x(d => xScale(d.parsedEndTime))
+        .x(d => xScale(d.round))
         .y(d => yScale(d.NewRating));
 
     const pathData = lineGenerator(filteredData);

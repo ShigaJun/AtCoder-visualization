@@ -3,12 +3,13 @@ import { Tooltip } from "@mui/material";
 import RatingTooltip from "./RatingTooltip";
 
 export default function RatingPoints({ data, xScale, yScale, color }) {
+    console.log("RatingPoints: ", data);
     return (
         <g>
             {data.map((d, i) => (
                 <Tooltip title={<RatingTooltip data={data[i]} />} key={i}>
                     <circle
-                        cx={xScale(new Date(d.EndTime))}
+                        cx={xScale(i + 1)}
                         cy={yScale(d.NewRating)}
                         r={4}
                         fill={color}
@@ -16,7 +17,6 @@ export default function RatingPoints({ data, xScale, yScale, color }) {
                         strokeWidth={1.5}
                     />
                 </Tooltip>
-
             ))}
         </g>
     );

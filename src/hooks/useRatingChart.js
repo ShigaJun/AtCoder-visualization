@@ -4,17 +4,15 @@ import { MARGIN, WIDTH, HEIGHT } from "../constants";
 export function useRatingChart(dataList) {
     const flatData = dataList.flat();
 
-    const xDates = flatData.map(d => new Date(d.EndTime));
     const yRatings = flatData.map(d => d.NewRating);
 
-    const xMin = new Date(Math.min(...xDates));
-    const xMax = new Date(Math.max(...xDates));
+    const xMax = Math.max(...dataList.map(data => data.length));
 
     const yMin = Math.min(...yRatings);
     const yMax = Math.max(...yRatings);
 
-    const xScale = scaleTime()
-        .domain([xMin, xMax])
+    const xScale = scaleLinear()
+        .domain([1, xMax])
         .range([MARGIN.left, WIDTH - MARGIN.right]);
 
     const yScale = scaleLinear()
