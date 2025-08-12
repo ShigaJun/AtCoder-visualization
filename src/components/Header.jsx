@@ -1,11 +1,11 @@
-import { Container } from '@mui/material';
+import { Box } from '@mui/material';
 
 export default function Header() {
     return (
         <header className="header">
-            <Container>
-                <h1>AtCoder Visualization</h1>
-            </Container>
+            <Box>
+                <h1 style={{textAlign: "center"}}>AtCoder Visualization</h1>
+            </Box>
         </header>
     );
 }
