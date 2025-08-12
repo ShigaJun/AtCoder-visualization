@@ -48,11 +48,9 @@ export default function SuggestionsFilter({ myParticiptions, myLatestRating, myF
         .slice(myIndex + 1) // 自分より上の色だけ
         .flatMap(color => data[color] || []); // ユーザーIDを結合
 
-    console.log(higherUserIds);
-
     const filteredUserIds = higherUserIds.filter(userId => {
         const rating = results[userId];
-        return Math.abs(rating[0] - myFirstRating) <= 20;
+        return Math.abs(rating[0] - myFirstRating) <= 20 && 0 <= rating[myParticiptions] - myLatestRating && rating[myParticiptions] - myLatestRating <= 100;
     });
 
     console.log(filteredUserIds);

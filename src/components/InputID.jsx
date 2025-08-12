@@ -61,7 +61,7 @@ export default function InputId({ inputs, setInputs, loadUserData, userNames, ra
                 <br />
                 <Button variant="contained" type="submit" loading={loading}>表示</Button>
             </form>
-            {ratingDatas[0] ? <TargetUserSuggestions myParticiptions={myParticiptions} myLatestRating={ratingDatas[0][ratingDatas[0].length - 1].NewRating} myFirstRating={ratingDatas[0][0].NewRating} /> : null}
+            {ratingDatas[0] ? <TargetUserSuggestions myParticiptions={ratingDatas[0].length} myLatestRating={ratingDatas[0][ratingDatas[0].length - 1].NewRating} myFirstRating={ratingDatas[0][0].NewRating} /> : null}
         </div>
     );
 }
