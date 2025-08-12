@@ -7,12 +7,9 @@ import Legend from "./Legend";
 import RatingChart from "./RatingChart";
 import DiligenceChart from "./DiligenceChart";
 import CumulativeScores from "../utils/CumulativeScores";
-import Loading from "./Loading";
-
-const defaultUser = "WatanabeHaruto";
 
 export default function Main() {
-    const [inputs, setInputs] = useState([defaultUser]);
+    const [inputs, setInputs] = useState([""]);
     const [userNames, setUserNames] = useState([]);
     const [ratingDatas, setRatingDatas] = useState([]);
     const [processedDataList, setProcessedDataList] = useState([]);
@@ -55,10 +52,6 @@ export default function Main() {
         );
         setProcessedDataList(processedList);
     };
-
-    useEffect(() => {
-        loadUserData([defaultUser]);
-    }, []);
     
     return (
         <main>

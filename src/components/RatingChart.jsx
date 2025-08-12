@@ -6,10 +6,18 @@ import RatingLine from "./RatingLine";
 import RatingPoints from "./RatingPoints";
 
 export default function RatingChart({ dataList, userNames }) {
-    if (!dataList || dataList.length == 0) return <p>Loading...</p>;
-
     const { xScale, yScale } = useRatingChart(dataList);
-    console.log(dataList);
+
+    if (!dataList || dataList.length == 0) {
+        return (
+            <div>
+                <svg width={WIDTH} height={HEIGHT}>
+                    <Axis xScale={xScale} yScale={yScale} />
+                </svg>
+            </div>
+        );
+    }
+    
     return (
         <svg width={WIDTH} height={HEIGHT}>
             <Axis xScale={xScale} yScale={yScale} />
@@ -33,4 +41,5 @@ export default function RatingChart({ dataList, userNames }) {
             ))}
         </svg>
     );
+
 }
