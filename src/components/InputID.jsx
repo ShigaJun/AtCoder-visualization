@@ -2,8 +2,9 @@ import { useState } from "react";
 import { TextField, Button } from "@mui/material";
 
 import { MAX_USERS } from "../constants";
+import TargetUserSuggestions from "./TargetUserSuggestions";
 
-export default function InputID({ inputs, setInputs, loadUserData, userNames, ratingDatas, processedDataList }) {
+export default function InputID({ inputs, setInputs, loadUserData, userNames, ratingDatas, processedDataList, myParticiptions, myLatestRating, myFirstRating }) {
     const [loading, setLoading] = useState(false);
 
     const handleChange = (index, value) => {
@@ -34,30 +35,33 @@ export default function InputID({ inputs, setInputs, loadUserData, userNames, ra
     }
 
     return (
-        <form onSubmit={handleSubmit} style={{ marginBottom: "1rem" }}>
-            {inputs.map((input, idx) => (
-                <div key={idx} style={{ marginBottom: "0.5rem" }}>
-                    <label>
-                        <TextField
-                            error={checkError(idx)}
-                            id="outlined-basic"
-                            value={input}
-                            onChange={(e) => handleChange(idx, e.target.value)}
-                            label={`AtCoder ID ${idx + 1}`}
-                            variant="outlined"
-                            helperText={checkError(idx) ? `${userNames[idx]}のデータ取得に失敗しました．` : ""}
-                        />
-                    </label>
-                </div>
-            ))}
+        <div>
+            <form onSubmit={handleSubmit} style={{ marginBottom: "1rem" }}>
+                {inputs.map((input, idx) => (
+                    <div key={idx} style={{ marginBottom: "0.5rem" }}>
+                        <label>
+                            <TextField
+                                error={checkError(idx)}
+                                id="outlined-basic"
+                                value={input}
+                                onChange={(e) => handleChange(idx, e.target.value)}
+                                label={`AtCoder ID ${idx + 1}`}
+                                variant="outlined"
+                                helperText={checkError(idx) ? `${userNames[idx]}のデータ取得に失敗しました．` : ""}
+                            />
+                        </label>
+                    </div>
+                ))}
 
-            {inputs.length < MAX_USERS && (
-                <Button variant="outlined" type="button" onClick={handleAddUser} style={{ marginBottom: "0.5rem" }}>
-                    ＋ユーザーを追加
-                </Button>
-            )}
-            <br />
-            <Button variant="contained" type="submit" loading={loading}>表示</Button>
-        </form>
+                {inputs.length < MAX_USERS && (
+                    <Button variant="outlined" type="button" onClick={handleAddUser} style={{ marginBottom: "0.5rem" }}>
+                        ＋ユーザーを追加
+                    </Button>
+                )}
+                <br />
+                <Button variant="contained" type="submit" loading={loading}>表示</Button>
+            </form>
+            {ratingDatas[0] ? <TargetUserSuggestions myParticiptions={myParticiptions} myLatestRating={ratingDatas[0][ratingDatas[0].length - 1].NewRating} myFirstRating={myFirstRating} /> : null}
+        </div>
     );
 }

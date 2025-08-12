@@ -9,6 +9,8 @@ export const COLORS = [
     [2800, "#FF0000"]
 ];
 
+export const RATING_LOWER_BOUND = [[0, '灰'], [400, '茶'], [800, '緑'], [1200, '水'], [1600, '青'], [2000, '黄'], [2400, '橙'], [2800, '赤']];
+
 export const MARGIN = { top: 20, right: 30, bottom: 30, left: 50 };
 export const WIDTH = 800;
 export const HEIGHT = 400;

@@ -9,7 +9,7 @@ import DiligenceChart from "./DiligenceChart";
 import CumulativeScores from "../utils/CumulativeScores";
 
 export default function Main() {
-    const [inputs, setInputs] = useState([""]);
+    const [inputs, setInputs] = useState(["WatanabeHaruto"]);
     const [userNames, setUserNames] = useState([]);
     const [ratingDatas, setRatingDatas] = useState([]);
     const [processedDataList, setProcessedDataList] = useState([]);
