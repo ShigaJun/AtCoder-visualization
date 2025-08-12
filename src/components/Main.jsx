@@ -22,7 +22,6 @@ export default function Main() {
         const newInputs = [...inputs];
         newInputs[index] = value;
         setInputs(newInputs);
-        console.log("newInputs", newInputs);
     };
 
     const handleAddUser = () => {
@@ -48,8 +47,6 @@ export default function Main() {
 
         const validRatings = ratings.map((r, idx) => r && submissions[idx] ? r : null);
         const validSubmissions = submissions.map((s, idx) => s && ratings[idx] ? s : null);
-
-        console.log(ratings, submissions);
 
         const filteredNames = [];
         const filteredRatings = [];
