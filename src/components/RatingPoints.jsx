@@ -3,7 +3,6 @@ import { Tooltip } from "@mui/material";
 import RatingTooltip from "./RatingTooltip";
 
 export default function RatingPoints({ data, xScale, yScale, color }) {
-    console.log("RatingPoints: ", data);
     return (
         <g>
             {data.map((d, i) => (
