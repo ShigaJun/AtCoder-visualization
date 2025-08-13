@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Grid, Card, CardContent, Typography } from "@mui/material";
 
 import { fetchUserData } from "../api";
-import InputId from "./InputId";
+import InputId from "./Input";
 import Legend from "./Legend";
 import RatingChart from "./RatingChart";
 import DiligenceChart from "./DiligenceChart";
