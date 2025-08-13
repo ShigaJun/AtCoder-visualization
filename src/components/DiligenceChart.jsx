@@ -1,21 +1,30 @@
+import { Box, CircularProgress } from "@mui/material";
+
 import { useDiligenceChart } from "../hooks/useDiligenceChart";
 import { WIDTH, HEIGHT, LEGEND_COLORS } from "../constants";
 import Axis from "./Axis";
 import DiligenceLine from "./DiligenceLine";
 import DiligencePoints from "./DiligencePoints";
 
-export default function DiligenceChart({ dataList, userNames }) {
-    const { xScale, yScale } = useDiligenceChart(dataList);
-    
-    if (!dataList || dataList.length == 0) {
+export default function DiligenceChart({ dataList, isLoading, userNames }) {
+    if (!dataList || dataList.length == 0 || isLoading) {
         return (
-            <div>
-                <svg width={WIDTH} height={HEIGHT}>
-                    <Axis xScale={xScale} yScale={yScale} />
-                </svg>
-            </div>
+            <Box
+                width={WIDTH}
+                height={HEIGHT}
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+            >
+                <Box display="flex" flexDirection="column" alignItems="center">
+                    <p>Loading...</p>
+                    <CircularProgress />
+                </Box>
+            </Box>
         );
     }
+
+    const { xScale, yScale } = useDiligenceChart(dataList);
 
     return (
         <svg width={WIDTH} height={HEIGHT}>

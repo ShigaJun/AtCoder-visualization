@@ -4,9 +4,7 @@ import { TextField, Button } from "@mui/material";
 import { MAX_USERS } from "../constants";
 import TargetUserSuggestions from "./TargetUserSuggestions";
 
-export default function InputId({ inputs, setInputs, loadUserData, userNames, ratingDatas, processedDataList }) {
-    const [loading, setLoading] = useState(false);
-
+export default function InputId({ inputs, setInputs, loadUserData, userNames, ratingDatas, processedDataList, loading, setLoading }) {
     const handleChange = (index, value) => {
         const newInputs = [...inputs];
         newInputs[index] = value;

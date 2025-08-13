@@ -1,3 +1,5 @@
+import { Box, CircularProgress } from "@mui/material";
+
 import { useRatingChart } from "../hooks/useRatingChart";
 import { WIDTH, HEIGHT, LEGEND_COLORS } from "../constants";
 import Axis from "./Axis";
@@ -5,7 +7,24 @@ import BackgroundBands from "./BackgroundBands";
 import RatingLine from "./RatingLine";
 import RatingPoints from "./RatingPoints";
 
-export default function RatingChart({ dataList, userNames }) {
+export default function RatingChart({ dataList, isLoading, userNames }) {
+    if (!dataList || dataList.length == 0 || isLoading) {
+        return (
+            <Box
+                width={WIDTH}
+                height={HEIGHT}
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+            >
+                <Box display="flex" flexDirection="column" alignItems="center">
+                    <p>Loading...</p>
+                    <CircularProgress />
+                </Box>
+            </Box>
+        );
+    }
+
     const { xScale, yScale } = useRatingChart(dataList);
 
     if (!dataList || dataList.length == 0) {
@@ -17,7 +36,7 @@ export default function RatingChart({ dataList, userNames }) {
             </div>
         );
     }
-    
+
     return (
         <svg width={WIDTH} height={HEIGHT}>
             <Axis xScale={xScale} yScale={yScale} />
