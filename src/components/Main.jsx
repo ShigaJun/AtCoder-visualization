@@ -81,7 +81,7 @@ export default function Main() {
                                 AtCoder レーティング推移
                             </Typography>
                             <Typography variant="body2" gutterBottom>
-                                x軸：日付　y軸：レーティング
+                                x軸：コンスト出場回数　y軸：レーティング
                             </Typography>
                             <RatingChart dataList={ratingDatas} userNames={userNames} isLoading={loading} />
                         </CardContent>
