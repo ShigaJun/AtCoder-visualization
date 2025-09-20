@@ -11,10 +11,10 @@
 				"name": "Tokyo"
 			},
 			"timezone": "Asia/Tokyo",
-			"latitude": 35.547,
-			"longitude": 139.4555,
-			"postalCode": "194-0031"
+			"latitude": 35.5381,
+			"longitude": 139.4479,
+			"postalCode": "194-0011"
 		},
-		"timestamp": 1757342120306
+		"timestamp": 1758358141878
 	}
 }

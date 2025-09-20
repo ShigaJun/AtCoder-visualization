@@ -72,8 +72,8 @@ export default function Main() {
                 loading={loading}
                 setLoading={setLoading}
             />
-            <Legend userNames={userNames} />
-            <Grid container spacing={2}>
+            {/* <Legend userNames={userNames} /> */}
+            <Grid container spacing={2} justifyContent="center">
                 <Grid item xs={12} sm={5}>
                     <Card>
                         <CardContent>

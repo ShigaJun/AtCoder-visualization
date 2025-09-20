@@ -4,8 +4,8 @@ import { LEGEND_COLORS } from "../constants";
 
 export default function Legend({ userNames }) {
     return (
-        <Box>
-            <div style={{ textAlign: "left" }}>
+        <Box sx={{ textAlign: "left", ml: 25 }}>
+            <div>
                 <strong>凡例:</strong>
                 <ul>
                     {userNames.map((name, idx) => (
