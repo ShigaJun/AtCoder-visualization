@@ -11,10 +11,10 @@ export default function DiligencePoints({ data, xScale, yScale, color, userName 
                         key={i}
                         cx={xScale(d.round)}
                         cy={yScale(d.cumulativeScore)}
-                        r={4}
+                        r={2.5}
                         fill={color}
                         stroke="#fff"
-                        strokeWidth={1.5}
+                        strokeWidth={0.5}
                     />
                 </Tooltip>
             ))}

@@ -10,10 +10,10 @@ export default function RatingPoints({ data, xScale, yScale, color, userName }) 
                     <circle
                         cx={xScale(i + 1)}
                         cy={yScale(d.NewRating)}
-                        r={4}
+                        r={2.5}
                         fill={color}
                         stroke="#fff"
-                        strokeWidth={1.5}
+                        strokeWidth={0.5}
                     />
                 </Tooltip>
             ))}
