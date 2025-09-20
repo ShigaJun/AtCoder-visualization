@@ -1,20 +1,14 @@
 {
 	"geolocation": {
 		"data": {
-			"city": "Machida",
 			"country": {
 				"code": "JP",
 				"name": "Japan"
 			},
-			"subdivision": {
-				"code": "13",
-				"name": "Tokyo"
-			},
 			"timezone": "Asia/Tokyo",
-			"latitude": 35.5381,
-			"longitude": 139.4479,
-			"postalCode": "194-0011"
+			"latitude": 35.69,
+			"longitude": 139.69
 		},
-		"timestamp": 1758358276055
+		"timestamp": 1758412337233
 	}
 }

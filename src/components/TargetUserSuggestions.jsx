@@ -9,11 +9,20 @@ export default function TargetUserSuggestions({ myParticiptions, myLatestRating,
     if (!filteredUserIds) return null;
 
     const handleClick = (id) => {
-        if (inputs.length < MAX_USERS) {
-            const newInputs = [...inputs];
-            newInputs[inputs.length] = id;
+        const newInputs = [...inputs];
+        let newIdx = newInputs.length;
+
+        function initInputs(newIdx, id) {
+            newInputs[newIdx] = id;
             setInputs(newInputs);
-        };
+        }
+
+        if (newInputs[inputs.length - 1] == "") {
+            newIdx = newInputs.length - 1;
+            initInputs(newIdx, id);
+        } else if (inputs.length < MAX_USERS) {
+            initInputs(newIdx, id);
+        }
     };
 
     return (
